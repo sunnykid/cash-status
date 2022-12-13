@@ -20,7 +20,12 @@
 		</li>
 		<li>
 			<a href="<%=request.getContextPath()%>/cashSumByMonth.jsp?category=지출">월별 지출 목록</a> 
-		</li>		
+		</li>	
+		<li>
+			<a href="<%=request.getContextPath()%>/cashYearStatistics.jsp">연도별 통계</a> 
+		</li>	
+
+			
 	</ol>
 </body>
 </html>

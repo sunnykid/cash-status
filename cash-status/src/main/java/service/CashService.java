@@ -28,6 +28,26 @@ public class CashService {
 		return map;
 	}
 	
+	public ArrayList<HashMap<String,Object>> getCashListByYear() {
+		Connection conn = null;
+		ArrayList<HashMap<String,Object>> list = null;
+		try {
+			DBUtil dbUtil = new DBUtil();
+			conn = dbUtil.getConnection();
+			CashDao cashDao = new CashDao();
+			list = cashDao.selectYearStatistics(conn);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
 	public ArrayList<HashMap<String,Object>> getCashListByCategory(String category) {
 		Connection conn = null;
 		ArrayList<HashMap<String,Object>> list = null;
@@ -64,6 +84,28 @@ public class CashService {
 				e.printStackTrace();
 			}
 		}
+		return list;
+	}	
+	
+	
+	public ArrayList<HashMap<String,Object>> getCashListByMonth(int year) {
+		Connection conn = null;
+		ArrayList<HashMap<String,Object>> list = null;
+		try {
+			DBUtil dbUtil = new DBUtil();
+			conn = dbUtil.getConnection();
+			CashDao cashDao = new CashDao();
+			list = cashDao.selectMonthStatistics(conn,year);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return list;
 	}	
 }
